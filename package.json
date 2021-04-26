@@ -1,0 +1,28 @@
+{
+  "name": "nfl-api",
+  "version": "1.0.0",
+  "description": "## Instructions In the initial commit to this project, you have been provided data about NFL teams. Over the course of the next couple of classes we will use this data to build up a REST API. These exercises will be completed in class.",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --format codeframe .",
+    "lint:fix": "eslint --fix --fixformat codeframe ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Smithci1/nfl-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Smithci1/nfl-api/issues"
+  },
+  "homepage": "https://github.com/Smithci1/nfl-api#readme",
+  "devDependencies": {
+    "eslint": "^7.25.0",
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

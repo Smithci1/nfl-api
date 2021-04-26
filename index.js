@@ -1,0 +1,13 @@
+const express = require('express')
+const app = express()
+
+app.get('/',(request,response) => {
+ 
+})
+
+
+
+
+app.listen(3370, () => {
+    console.log('listening on 3370...')
+})
