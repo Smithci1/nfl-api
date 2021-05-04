@@ -9,6 +9,21 @@ const getTeam = (req,res) => {
             parseInt(req.params.id)})
     return res.send(team)
     }
+const addNewTeam = (req,res) => {
+        const {id, location, mascot, 
+               abbreviation, conference, division} = req.body
+           
+    if (!id || !location || !mascot
+     || !abbreviation || !conference || !division){
+         return res.status(400)
+         .send('missing one or more criteria')
+     } 
+    const newTeam =   {id, location, mascot, 
+        abbreviation, conference, division}  
+    teams.push(newTeam)  
+    return res.status(201)
+    .send(newTeam)    
+} 
 module.exports = {getAllTeams,
-    getTeam
+    getTeam, addNewTeam
 }

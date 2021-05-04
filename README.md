@@ -4,7 +4,7 @@
 In the initial commit to this project, you have been provided data about NFL teams. Over the course of the next couple of classes we will use this data to build up a REST API. These exercises will be completed in class.
 
 ### Part One
-In a branch called `part-one-answer`, you are tasked with creating an Express server capable of responding to the following routes:
+//In a branch called `part-one-answer`, you are tasked with creating an Express server capable of responding to the following routes:
 
 * GET /teams - Return the full list of teams
 * GET /teams/ID - Returns the team associated with that ID, where ID is a number (ex. `/teams/12`)
