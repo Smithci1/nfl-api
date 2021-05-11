@@ -1,7 +1,6 @@
 const express = require('express')
 const teams = require('./teams.js')
 const {getAllTeams, getTeam, addNewTeam} = require('./controller/teams')
-const bodyParser = require('body-parser')
 const app = express()
 
 app.get('/teams', getAllTeams)

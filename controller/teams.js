@@ -1,29 +1,24 @@
-const teams = require('../teams.js')
+const models = require('../models')
+const getAllTeams = async (request, response) =>
+{ const teams = await models.teams.findAll()
 
-const getAllTeams = (req,res) => {
-    return res.send(teams) 
-}
-const getTeam = (req,res) => {
-    const team = teams.find((team) => {
-            return team.id === 
-            parseInt(req.params.id)})
-    return res.send(team)
-    }
-const addNewTeam = (req,res) => {
-        const {id, location, mascot, 
-               abbreviation, conference, division} = req.body
-           
-    if (!id || !location || !mascot
-     || !abbreviation || !conference || !division){
-         return res.status(400)
-         .send('missing one or more criteria')
-     } 
-    const newTeam =   {id, location, mascot, 
-        abbreviation, conference, division}  
-    teams.push(newTeam)  
-    return res.status(201)
-    .send(newTeam)    
-} 
-module.exports = {getAllTeams,
-    getTeam, addNewTeam
-}
+  return response.send(teams) }
+const getTeamById = async (request, response) => { const { id } = request.params
+  const matchingTeam = await models.teams.findOne({ where: { id } })
+
+  return matchingTeam ? response.send(matchingTeam) : response.sendStatus(404) }
+const saveNewTeam = async (request, response) => { const {
+  location, mascot, abbreviation, conference, division
+} = request.body
+
+if (!location || !mascot || !abbreviation ||
+   !conference || !division)
+{ return response.status(400)
+  .send('The following fields are required: location, mascot, abbreviation, conference, division') }
+const newTeam = await models.teams.create({
+  location, mascot, abbreviation, conference, division
+})
+
+return response.status(201).send(newTeam) }
+
+module.exports = { getAllTeams, getTeamById, saveNewTeam }
