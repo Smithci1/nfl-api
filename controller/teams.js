@@ -1,12 +1,19 @@
+const { response } = require('express')
 const models = require('../models')
 const getAllTeams = async (request, response) =>
 { const teams = await models.teams.findAll()
 
   return response.send(teams) }
-const getTeamById = async (request, response) => { const { id } = request.params
-  const matchingTeam = await models.teams.findOne({ where: { id } })
+const getTeamById = async (request, response) => {
+  try {
+    const { id } = request.params
+    const matchingTeam = await models.teams.findOne({ where: { id } })
 
-  return matchingTeam ? response.send(matchingTeam) : response.sendStatus(404) }
+    return matchingTeam ? response.send(matchingTeam)
+      : response.sendStatus(404)
+  } catch (error) {
+    return response.status(500).send('unable to retrieve team try again')
+  } }
 const saveNewTeam = async (request, response) => { const {
   location, mascot, abbreviation, conference, division
 } = request.body
